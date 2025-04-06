@@ -1,21 +1,37 @@
-/* QuestionCard.css */
-
+/* Overall Card Style */
 .question-card {
-    width: 600px;             /* Fixed width for consistency */
-    min-height: 300px;        /* Minimum height to prevent jarring size changes */
+    width: 600px;
+    min-height: 300px;
     margin: 50px auto;
     padding: 20px;
-    border: 2px solid #007bff;
+    background-color: #fff;
+    border: 2px solid #58A4B0; /* Primary vibrant blue/teal */
     border-radius: 15px;
     position: relative;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: height 0.3s ease;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
   
-  /* Navigation arrows on the right side */
+  /* Glow effects based on answer state */
+  .question-card.default {
+    border-color: #58A4B0;
+    box-shadow: 0 0 8px rgba(88, 164, 176, 0.5);
+  }
+  
+  .question-card.correct {
+    border-color: #28a745;
+    box-shadow: 0 0 12px rgba(40, 167, 69, 0.7);
+  }
+  
+  .question-card.incorrect {
+    border-color: #dc3545;
+    box-shadow: 0 0 12px rgba(220, 53, 69, 0.7);
+  }
+  
+  /* Navigation Arrows (positioned to the right) */
   .navigation {
     position: absolute;
-    right: -50px;             /* Positions the arrows to the right of the card */
+    right: -50px;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -24,89 +40,121 @@
   }
   
   .nav-button {
-    background-color: #007bff;
+    background-color: #58A4B0;
     border: none;
-    color: white;
+    color: #fff;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 1.2em;
+    transition: background-color 0.3s ease;
   }
   
+  .nav-button:hover {
+    background-color: #4a8c9e;
+  }
+  
+  /* Question Content and Text */
   .question-content {
     margin-bottom: 20px;
   }
   
   .question-text {
-    font-size: 1.2em;
-    margin-bottom: 15px;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
   }
   
-  /* Optional: styling for a difficulty slider, if you add one later */
-  .difficulty-slider {
-    margin-bottom: 15px;
-  }
-  
-  /* Multiple Choice Options */
+  /* Multiple-Choice Options */
   .choices {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Left-align the choices */
+    align-items: flex-start;
   }
   
   .choice {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     cursor: pointer;
     position: relative;
   }
   
-  /* Hide the native radio button */
+  /* Hide the native radio input off-screen */
   .real-radio {
     position: absolute;
-    opacity: 0;
-    pointer-events: none;
+    left: -9999px;
   }
   
-  /* Custom styled circle with letter (A, B, C, D) */
+  /* Custom styled letter circle for options */
   .choice-letter {
     display: inline-block;
-    width: 30px;
-    height: 30px;
-    border: 2px solid #007bff;
+    width: 35px;
+    height: 35px;
+    border: 2px solid #58A4B0;
     border-radius: 50%;
     text-align: center;
-    line-height: 26px;   /* Vertically center the text */
-    margin-right: 10px;
-    color: #007bff;
+    line-height: 31px;
+    margin-right: 12px;
+    color: #58A4B0;
     font-weight: bold;
-    user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Roboto', sans-serif;
   }
   
-  /* The actual text for each choice */
+  /* When the radio is checked, fill the circle */
+  .real-radio:checked + .choice-letter {
+    background-color: #58A4B0;
+    color: #fff;
+  }
+  
+  /* Option text styling */
   .choice-text {
-    font-size: 1rem;
+    font-size: 1.2em;
+    font-family: 'Roboto', sans-serif;
   }
   
-  /* Self-entered answer input */
+  /* Self-entered Answer Input */
+  .self-answer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
   .self-answer input {
-    width: 100%;
-    padding: 8px;
-    font-size: 1em;
+    width: 80%;
+    max-width: 300px;
+    padding: 12px;
+    font-size: 1.2em;
+    border: 2px solid #58A4B0;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
   }
   
-  /* Check button styling */
+  .self-answer input:focus {
+    border-color: #4a8c9e;
+  }
+  
+  /* Check Button Styling */
   .check-button {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    background-color: #007bff;
+    background-color: #58A4B0;
     border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 1.1em;
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s ease;
+  }
+  
+  .check-button:hover {
+    background-color: #4a8c9e;
   }
   

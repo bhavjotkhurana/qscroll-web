@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './QuestionCard.css';
 
 export interface Question {
@@ -23,7 +23,14 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   onNext,
 }) => {
   const [userAnswer, setUserAnswer] = useState('');
-  const letters = ['A', 'B', 'C', 'D']; // Adjust if more/less than 4 choices
+  const [answerStatus, setAnswerStatus] = useState<'default' | 'correct' | 'incorrect'>('default');
+  const letters = ['A', 'B', 'C', 'D'];
+
+  // Reset the state when a new question is loaded
+  useEffect(() => {
+    setUserAnswer('');
+    setAnswerStatus('default');
+  }, [question]);
 
   const handleChoiceChange = (choice: string) => {
     setUserAnswer(choice);
@@ -35,18 +42,17 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
 
   const handleCheckClick = () => {
     const isCorrect = userAnswer.trim() === question.correctAnswer;
+    setAnswerStatus(isCorrect ? 'correct' : 'incorrect');
     onCheck(isCorrect);
   };
 
   return (
-    <div className="question-card">
-      {/* NAVIGATION BUTTONS */}
+    <div className={`question-card ${answerStatus}`}>
       <div className="navigation">
         <button onClick={onPrevious} className="nav-button">↑</button>
         <button onClick={onNext} className="nav-button">↓</button>
       </div>
 
-      {/* QUESTION CONTENT */}
       <div className="question-content">
         <p className="question-text">{question.text}</p>
 
@@ -56,7 +62,6 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
               const letter = letters[index];
               return (
                 <label key={index} className="choice">
-                  {/* Hidden/Off-screen radio for actual selection */}
                   <input
                     type="radio"
                     name={`question-${question.id}`}
@@ -65,9 +70,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                     onChange={() => handleChoiceChange(letter)}
                     className="real-radio"
                   />
-                  {/* Custom circle + letter */}
                   <span className="choice-letter">{letter}</span>
-                  {/* Actual text of the choice */}
                   <span className="choice-text">{choice}</span>
                 </label>
               );
@@ -87,7 +90,6 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
         )}
       </div>
 
-      {/* CHECK BUTTON */}
       <button onClick={handleCheckClick} className="check-button">Check</button>
     </div>
   );
