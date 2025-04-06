@@ -1,0 +1,10 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  /* Center the card vertically and horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* full viewport height */
+  padding: 20px;
+}
