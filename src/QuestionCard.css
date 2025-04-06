@@ -1,16 +1,21 @@
+/* QuestionCard.css */
+
 .question-card {
-    max-width: 600px;
+    width: 600px;             /* Fixed width for consistency */
+    min-height: 300px;        /* Minimum height to prevent jarring size changes */
     margin: 50px auto;
     padding: 20px;
     border: 2px solid #007bff;
     border-radius: 15px;
     position: relative;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: height 0.3s ease;
   }
   
+  /* Navigation arrows on the right side */
   .navigation {
     position: absolute;
-    left: -50px;
+    right: -50px;             /* Positions the arrows to the right of the card */
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -38,21 +43,61 @@
     margin-bottom: 15px;
   }
   
+  /* Optional: styling for a difficulty slider, if you add one later */
+  .difficulty-slider {
+    margin-bottom: 15px;
+  }
+  
+  /* Multiple Choice Options */
   .choices {
     display: flex;
     flex-direction: column;
+    align-items: flex-start; /* Left-align the choices */
   }
   
   .choice {
+    display: flex;
+    align-items: center;
     margin-bottom: 10px;
+    cursor: pointer;
+    position: relative;
   }
   
+  /* Hide the native radio button */
+  .real-radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  /* Custom styled circle with letter (A, B, C, D) */
+  .choice-letter {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 26px;   /* Vertically center the text */
+    margin-right: 10px;
+    color: #007bff;
+    font-weight: bold;
+    user-select: none;
+  }
+  
+  /* The actual text for each choice */
+  .choice-text {
+    font-size: 1rem;
+  }
+  
+  /* Self-entered answer input */
   .self-answer input {
     width: 100%;
     padding: 8px;
     font-size: 1em;
   }
   
+  /* Check button styling */
   .check-button {
     position: absolute;
     bottom: 20px;
