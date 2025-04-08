@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+# QScroll Web Prototype
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**QScroll Web** is a React/TypeScript prototype of a scrollable SAT‑style question interface. It demonstrates the core front‑end interactions and styling for a future adaptive learning platform focused on deep student data collection and personalized feedback.
 
-## Available Scripts
+## What’s Here
 
-In the project directory, you can run:
+- **Question Cards**  
+  - Single‑question view with rounded, vibrant cards  
+  - Supports two formats:
+    - **Multiple‑Choice** (A, B, C, D)  
+    - **Self‑Entry** (free‑form answer box)  
+  - “Check” button provides immediate visual feedback:
+    - Blue border = unanswered  
+    - Green glow = correct  
+    - Red glow = incorrect  
 
-### `npm start`
+- **Linear Navigation**  
+  - Up/down arrow buttons let students move forward or backward through questions, mimicking a TikTok‑style scroll.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Hard‑Coded Questions**  
+  - A small set of sample SAT‑style questions lives directly in the front end for rapid prototyping.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Styling Inspiration**  
+  - Clean, flashcard‑like layout inspired by Quizlet  
+  - Playful color palette and micro‑interactions inspired by Duolingo
 
-### `npm test`
+## Prototype Goals
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This front‑end prototype lays the groundwork for:
 
-### `npm run build`
+1. **Adaptive Question Delivery**  
+   Collecting user responses (correctness, response time, perceived difficulty) to power a data‑driven algorithm that selects optimal next questions.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Deep Student Analytics**  
+   Building dashboards that reveal performance by topic, time‑on‑task, and difficulty trends, enabling learners to understand and direct their own study.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Seamless UX**  
+   Testing core interactions—card navigation, answer checking, and difficulty feedback—before adding a backend or persistent storage.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+*This is an early prototype. The next steps will replace hard‑coded data with a backend API, integrate analytics pipelines, and evolve the UI into a full adaptive learning platform.*  
